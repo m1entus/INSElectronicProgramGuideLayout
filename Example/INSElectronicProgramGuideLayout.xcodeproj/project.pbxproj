@@ -21,7 +21,7 @@
 		0639E07019DCA2D2009F1BC8 /* ISHourHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0639E06219DCA2D2009F1BC8 /* ISHourHeader.xib */; };
 		063FB7AE19D9F35E004FA0DC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 063FB7AD19D9F35E004FA0DC /* main.m */; };
 		063FB7B119D9F35E004FA0DC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 063FB7B019D9F35E004FA0DC /* AppDelegate.m */; };
-		063FB7B419D9F35E004FA0DC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 063FB7B319D9F35E004FA0DC /* ViewController.m */; };
+		063FB7B419D9F35E004FA0DC /* INSFloatingHeadersEPGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 063FB7B319D9F35E004FA0DC /* INSFloatingHeadersEPGViewController.m */; };
 		063FB7B719D9F35E004FA0DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 063FB7B519D9F35E004FA0DC /* Main.storyboard */; };
 		063FB7B919D9F35E004FA0DC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 063FB7B819D9F35E004FA0DC /* Images.xcassets */; };
 		063FB7BC19D9F35E004FA0DC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 063FB7BA19D9F35E004FA0DC /* LaunchScreen.xib */; };
@@ -32,6 +32,9 @@
 		06420EDA19E1493000F7969C /* ISFloatingCellOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06420ED919E1493000F7969C /* ISFloatingCellOverlay.xib */; };
 		06420EDD19E1A57F00F7969C /* ISHourHeaderBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06420EDC19E1A57F00F7969C /* ISHourHeaderBackgroundView.m */; };
 		064C31FA19E0511D0002E545 /* ISDashedLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 064C31F919E0511D0002E545 /* ISDashedLineView.m */; };
+		06A4AF2C1A437353004C8818 /* INSEPGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A4AF2B1A437353004C8818 /* INSEPGViewController.m */; };
+		06A4AF301A4374FD004C8818 /* ISFloatingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06A4AF2E1A4374FD004C8818 /* ISFloatingCell.m */; };
+		06A4AF311A4374FD004C8818 /* ISFloatingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 06A4AF2F1A4374FD004C8818 /* ISFloatingCell.xib */; };
 		06F96E0119E05E7F0046BBB4 /* ISFloatingCellOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 06F96E0019E05E7F0046BBB4 /* ISFloatingCellOverlay.m */; };
 		4C8EB35787474B6A91364CF3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9ADAE7F8D18E4BBE9F229769 /* libPods.a */; };
 		D2FC139C1A432F9500C45BEA /* INSElectronicProgramGuideLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FC13971A432F9500C45BEA /* INSElectronicProgramGuideLayout.m */; };
@@ -75,8 +78,8 @@
 		063FB7AD19D9F35E004FA0DC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		063FB7AF19D9F35E004FA0DC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		063FB7B019D9F35E004FA0DC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		063FB7B219D9F35E004FA0DC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		063FB7B319D9F35E004FA0DC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		063FB7B219D9F35E004FA0DC /* INSFloatingHeadersEPGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = INSFloatingHeadersEPGViewController.h; sourceTree = "<group>"; };
+		063FB7B319D9F35E004FA0DC /* INSFloatingHeadersEPGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = INSFloatingHeadersEPGViewController.m; sourceTree = "<group>"; };
 		063FB7B619D9F35E004FA0DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		063FB7B819D9F35E004FA0DC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		063FB7BB19D9F35E004FA0DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -94,6 +97,11 @@
 		06420EDC19E1A57F00F7969C /* ISHourHeaderBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISHourHeaderBackgroundView.m; sourceTree = "<group>"; };
 		064C31F819E0511D0002E545 /* ISDashedLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISDashedLineView.h; sourceTree = "<group>"; };
 		064C31F919E0511D0002E545 /* ISDashedLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISDashedLineView.m; sourceTree = "<group>"; };
+		06A4AF2A1A437353004C8818 /* INSEPGViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INSEPGViewController.h; sourceTree = "<group>"; };
+		06A4AF2B1A437353004C8818 /* INSEPGViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = INSEPGViewController.m; sourceTree = "<group>"; };
+		06A4AF2D1A4374FD004C8818 /* ISFloatingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFloatingCell.h; sourceTree = "<group>"; };
+		06A4AF2E1A4374FD004C8818 /* ISFloatingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISFloatingCell.m; sourceTree = "<group>"; };
+		06A4AF2F1A4374FD004C8818 /* ISFloatingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISFloatingCell.xib; sourceTree = "<group>"; };
 		06F96DFF19E05E7F0046BBB4 /* ISFloatingCellOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFloatingCellOverlay.h; sourceTree = "<group>"; };
 		06F96E0019E05E7F0046BBB4 /* ISFloatingCellOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISFloatingCellOverlay.m; sourceTree = "<group>"; };
 		65EEB555FB7D358602C981A5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,6 +164,9 @@
 				06420ED919E1493000F7969C /* ISFloatingCellOverlay.xib */,
 				06420EDB19E1A57F00F7969C /* ISHourHeaderBackgroundView.h */,
 				06420EDC19E1A57F00F7969C /* ISHourHeaderBackgroundView.m */,
+				06A4AF2D1A4374FD004C8818 /* ISFloatingCell.h */,
+				06A4AF2E1A4374FD004C8818 /* ISFloatingCell.m */,
+				06A4AF2F1A4374FD004C8818 /* ISFloatingCell.xib */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -188,8 +199,10 @@
 				0639E04B19DCA2CA009F1BC8 /* Cells */,
 				063FB7AF19D9F35E004FA0DC /* AppDelegate.h */,
 				063FB7B019D9F35E004FA0DC /* AppDelegate.m */,
-				063FB7B219D9F35E004FA0DC /* ViewController.h */,
-				063FB7B319D9F35E004FA0DC /* ViewController.m */,
+				063FB7B219D9F35E004FA0DC /* INSFloatingHeadersEPGViewController.h */,
+				063FB7B319D9F35E004FA0DC /* INSFloatingHeadersEPGViewController.m */,
+				06A4AF2A1A437353004C8818 /* INSEPGViewController.h */,
+				06A4AF2B1A437353004C8818 /* INSEPGViewController.m */,
 				063FB7B519D9F35E004FA0DC /* Main.storyboard */,
 				063FB7B819D9F35E004FA0DC /* Images.xcassets */,
 				063FB7BA19D9F35E004FA0DC /* LaunchScreen.xib */,
@@ -358,6 +371,7 @@
 				0639E07019DCA2D2009F1BC8 /* ISHourHeader.xib in Resources */,
 				0639E06919DCA2D2009F1BC8 /* ISSectionHeader.xib in Resources */,
 				063FB7B919D9F35E004FA0DC /* Images.xcassets in Resources */,
+				06A4AF311A4374FD004C8818 /* ISFloatingCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,13 +423,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0639E06619DCA2D2009F1BC8 /* ISCurrentTimeIndicatorView.m in Sources */,
-				063FB7B419D9F35E004FA0DC /* ViewController.m in Sources */,
+				063FB7B419D9F35E004FA0DC /* INSFloatingHeadersEPGViewController.m in Sources */,
 				D2FC139D1A432F9500C45BEA /* INSTimerWeakTarget.m in Sources */,
 				063FB7B119D9F35E004FA0DC /* AppDelegate.m in Sources */,
 				06420EDD19E1A57F00F7969C /* ISHourHeaderBackgroundView.m in Sources */,
 				06420ED119E13FD300F7969C /* Model.xcdatamodeld in Sources */,
+				06A4AF2C1A437353004C8818 /* INSEPGViewController.m in Sources */,
 				064C31FA19E0511D0002E545 /* ISDashedLineView.m in Sources */,
 				0639E06419DCA2D2009F1BC8 /* ISEPGCell.m in Sources */,
+				06A4AF301A4374FD004C8818 /* ISFloatingCell.m in Sources */,
 				063FB7AE19D9F35E004FA0DC /* main.m in Sources */,
 				D2FC139C1A432F9500C45BEA /* INSElectronicProgramGuideLayout.m in Sources */,
 				0639E06C19DCA2D2009F1BC8 /* ISHeaderBackgroundView.m in Sources */,
@@ -552,6 +568,7 @@
 			baseConfigurationReference = 65EEB555FB7D358602C981A5 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = INSElectronicProgramGuideLayout/Prefix.h;
 				INFOPLIST_FILE = INSElectronicProgramGuideLayout/Info.plist;
@@ -566,6 +583,7 @@
 			baseConfigurationReference = 703EE9D4205C16B67DF0F034 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = INSElectronicProgramGuideLayout/Prefix.h;
 				INFOPLIST_FILE = INSElectronicProgramGuideLayout/Info.plist;

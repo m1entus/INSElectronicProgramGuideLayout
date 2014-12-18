@@ -42,7 +42,7 @@
                 entry.channel = channel;
                 lastDate = newLastDate;
                 
-                entry.title = [[LoremIpsum wordsWithNumber:arc4random_uniform(5) + 2] uppercaseString];
+                entry.title = [[LoremIpsum wordsWithNumber:arc4random_uniform(5) + 2] capitalizedString];
             }
         }
     }

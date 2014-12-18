@@ -121,6 +121,7 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 
 - (void)dealloc
 {
+    [self invalidateLayoutCache];
     [self.minuteTimer invalidate];
     self.minuteTimer = nil;
 }
@@ -559,8 +560,8 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 
     CGFloat hourMinY = (self.shouldResizeStickyHeaders ? fmaxf(self.collectionView.contentOffset.y + self.collectionView.contentInset.top, 0.0) : self.collectionView.contentOffset.y + self.collectionView.contentInset.top);
 
-    CGFloat currentTimeVerticalGridlineMinY = (self.shouldResizeStickyHeaders ? fmaxf([self minimumGridY], self.collectionView.contentOffset.y + [self minimumGridY]) : self.collectionView.contentOffset.y + [self minimumGridY] - self.contentMargin.top);
-    CGFloat gridHeight = self.collectionViewContentSize.height - currentTimeVerticalGridlineMinY - self.contentMargin.bottom;
+    CGFloat currentTimeVerticalGridlineMinY = (self.shouldResizeStickyHeaders ? fmaxf(self.hourHeaderHeight, self.collectionView.contentOffset.y + [self minimumGridY]) : self.collectionView.contentOffset.y + [self minimumGridY] - self.contentMargin.top);
+    CGFloat gridHeight = self.collectionViewContentSize.height - currentTimeVerticalGridlineMinY - self.contentMargin.bottom + self.collectionView.contentOffset.y;
 
     NSDate *startDate = [[self earliestDate] ins_dateWithoutMinutesAndSeconds];
     CGFloat startDatePosition = [self xCoordinateForDate:startDate];
@@ -635,7 +636,7 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
         currentTimeIndicatorAttributes.frame = (CGRect){ {currentTimeIndicatorMinX, currentTimeIndicatorMinY}, self.currentTimeIndicatorSize };
         currentTimeIndicatorAttributes.zIndex = [self zIndexForElementKind:INSEPGLayoutElementKindCurrentTimeIndicator floating:YES];
 
-        CGFloat currentTimeVerticalGridlineMinY = (self.shouldResizeStickyHeaders ? fmaxf([self minimumGridY], self.collectionView.contentOffset.y + [self minimumGridY]) : self.collectionView.contentOffset.y + [self minimumGridY]);
+        CGFloat currentTimeVerticalGridlineMinY = (self.shouldResizeStickyHeaders ? fmaxf(self.hourHeaderHeight, self.collectionView.contentOffset.y + [self minimumGridY]) : self.collectionView.contentOffset.y + [self minimumGridY]);
 
         CGFloat gridHeight = (self.collectionViewContentSize.height + currentTimeVerticalGridlineMinY);
 

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Vyl-gx-L2c" customClass="ISFloatingCell">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="49"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="49"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Julia Szcześniak" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIR-nG-4v5">
+                        <rect key="frame" x="11" y="24" width="289" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="nDM-0H-Gct"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Rc-V1-rTJ">
+                        <rect key="frame" x="0.0" y="0.0" width="50" height="3"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="KFX-BC-UZS"/>
+                            <constraint firstAttribute="height" constant="3" id="PfS-Rl-p0z"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wpy-F3-Y9l">
+                        <rect key="frame" x="0.0" y="0.0" width="3" height="50"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="3" id="t6C-5C-9rd"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="19:05" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PW-OC-JtQ">
+                        <rect key="frame" x="11" y="8" width="289" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="aIn-8l-p57"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.40999999999999998" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="OIR-nG-4v5" firstAttribute="top" secondItem="3PW-OC-JtQ" secondAttribute="bottom" constant="-4" id="0j3-og-Zm7"/>
+                <constraint firstItem="OIR-nG-4v5" firstAttribute="leading" secondItem="Wpy-F3-Y9l" secondAttribute="trailing" constant="8" id="5NZ-uU-Rew"/>
+                <constraint firstItem="3PW-OC-JtQ" firstAttribute="trailing" secondItem="OIR-nG-4v5" secondAttribute="trailing" id="IlY-dv-SUQ"/>
+                <constraint firstItem="1Rc-V1-rTJ" firstAttribute="top" secondItem="Wpy-F3-Y9l" secondAttribute="top" id="NtK-gA-PTk"/>
+                <constraint firstItem="1Rc-V1-rTJ" firstAttribute="leading" secondItem="Vyl-gx-L2c" secondAttribute="leading" id="RMZ-dY-8iK"/>
+                <constraint firstAttribute="trailing" secondItem="OIR-nG-4v5" secondAttribute="trailing" id="YcQ-te-6hN"/>
+                <constraint firstAttribute="bottom" secondItem="Wpy-F3-Y9l" secondAttribute="bottom" constant="-1" id="Zvy-3F-88G"/>
+                <constraint firstItem="Wpy-F3-Y9l" firstAttribute="leading" secondItem="1Rc-V1-rTJ" secondAttribute="leading" id="cQt-9y-zsF"/>
+                <constraint firstItem="1Rc-V1-rTJ" firstAttribute="top" secondItem="Vyl-gx-L2c" secondAttribute="top" id="eb9-pL-0Kg"/>
+                <constraint firstItem="3PW-OC-JtQ" firstAttribute="top" secondItem="Vyl-gx-L2c" secondAttribute="topMargin" id="n52-LK-EZN"/>
+                <constraint firstItem="3PW-OC-JtQ" firstAttribute="leading" secondItem="Wpy-F3-Y9l" secondAttribute="trailing" constant="8" id="qOg-kl-CaQ"/>
+            </constraints>
+            <size key="customSize" width="300" height="49"/>
+            <connections>
+                <outlet property="dateLabel" destination="3PW-OC-JtQ" id="G3F-43-ors"/>
+                <outlet property="leftBorderView" destination="Wpy-F3-Y9l" id="bEP-gD-FwR"/>
+                <outlet property="titleLabel" destination="OIR-nG-4v5" id="6Z7-KH-2sl"/>
+                <outlet property="topBorderView" destination="1Rc-V1-rTJ" id="V6Q-X6-4D3"/>
+            </connections>
+            <point key="canvasLocation" x="55" y="-93.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

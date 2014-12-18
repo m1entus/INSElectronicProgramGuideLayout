@@ -55,39 +55,90 @@ typedef NS_ENUM(NSUInteger, INSElectronicProgramGuideLayoutType) {
 };
 
 @interface INSElectronicProgramGuideLayout : UICollectionViewLayout
+
+/**
+ *  Vertical space between sections (channels)
+ */
 @property (nonatomic, assign) CGFloat sectionGap;
+
+/**
+ *  Section size
+ */
 @property (nonatomic, assign) CGFloat sectionHeight;
 @property (nonatomic, assign) CGFloat sectionHeaderWidth;
 
+/**
+ *  Current time indicator and gridline size
+ */
 @property (nonatomic, assign) CGSize currentTimeIndicatorSize;
 @property (nonatomic, assign) CGFloat currentTimeVerticalGridlineWidth;
 
+/**
+ *  Gridlines size
+ */
 @property (nonatomic, assign) CGFloat horizontalGridlineHeight;
 @property (nonatomic, assign) CGFloat verticalGridlineWidth;
 
+/**
+ *  Hour width and hour header height
+ */
 @property (nonatomic, assign) CGFloat hourWidth;
 @property (nonatomic, assign) CGFloat hourHeaderHeight;
 
+/**
+ *  Default size to use for floating headers. If the delegate does not implement the collectionView:layout:sizeForFloatingItemOverlayAtIndexPath: method, the flow layout uses the value in this property to set the size of each floating header.
+ */
 @property (nonatomic, assign) CGSize floatingItemOverlaySize;
+
+/**
+ * Horizontal space between floating header and section.
+   Default value is 10.0
+ */
 @property (nonatomic, assign) CGFloat floatingItemOffsetFromSection;
 
+/**
+ * Distances between the border and the layout content view.
+ * Default value is UIEdgeInsetsMake(0, 0, 0, 0)
+ */
 @property (nonatomic, assign) UIEdgeInsets contentMargin;
+
+/**
+ *  Margin between cells.
+ *  Default value is UIEdgeInsetsMake(0, 0, 0, 10)
+ */
 @property (nonatomic, assign) UIEdgeInsets cellMargin;
 
 @property (nonatomic, assign) INSElectronicProgramGuideLayoutType headerLayoutType;
 
+/**
+ *  Set to YES if you want to resize sticky background headers when UICollectionView bounces.
+ */
 @property (nonatomic, assign) BOOL shouldResizeStickyHeaders;
+
+/**
+ *  Set to YES if you want to use floting overlay to each cell. If set to YES you have to register supplementaryViewOfKind INSEPGLayoutElementKindFloatingItemOverlay.
+ */
 @property (nonatomic, assign) BOOL shouldUseFloatingItemOverlay;
 
 @property (nonatomic, weak) id <INSElectronicProgramGuideLayoutDataSource> dataSource;
 @property (nonatomic, weak) id <INSElectronicProgramGuideLayoutDelegate> delegate;
 
+/**
+ *  Returns the x-axis position on collection view content view for date.
+ */
 - (CGFloat)xCoordinateForDate:(NSDate *)date;
+
+/**
+ * Returns date for x-axis position on collection view content view.
+ */
 - (NSDate *)dateForXCoordinate:(CGFloat)position;
 
 - (NSDate *)dateForHourHeaderAtIndexPath:(NSIndexPath *)indexPath;
 - (NSDate *)dateForHalfHourHeaderAtIndexPath:(NSIndexPath *)indexPath;
 
+/**
+ *  Scrolling to current time on timeline
+ */
 - (void)scrollToCurrentTimeAnimated:(BOOL)animated;
 
 // Since a "reloadData" on the UICollectionView doesn't call "prepareForCollectionViewUpdates:", this method must be called first to flush the internal caches
