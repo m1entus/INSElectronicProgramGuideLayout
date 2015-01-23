@@ -153,7 +153,7 @@ Special thanks to Eric Horacek who was originally wrote `MSCollectionViewCalenda
 
 *Copyright (c) 2014 inspace.io. All rights reserved.*
 
-It is open source and covered by a standard 2-clause BSD license. That means you have to mention *Cocoanetics* as the original author of this code and reproduce the LICENSE text inside your app. 
+It is open source and covered by a standard 2-clause BSD license. That means you have to mention [inspace.io](http://inspace.io) as the original author of this code and reproduce the LICENSE text inside your app. 
 
 You can purchase a [Non-Attribution-License](http://inspace.io) for 35 Euros for not having to include the LICENSE text.
 
