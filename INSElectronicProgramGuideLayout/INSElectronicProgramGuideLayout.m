@@ -830,11 +830,15 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
         return self.cachedEarliestDate;
     }
     NSDate *earliestDate = nil;
-
-    for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++) {
-        NSDate *earliestDateForSection = [self earliestDateForSection:section];
-        if ((earliestDateForSection && [earliestDateForSection ins_isEarlierThan:earliestDate]) || !earliestDate) {
-            earliestDate = earliestDateForSection;
+    
+    if ([self.dataSource respondsToSelector:@selector(fixedStartTimeForcollectionView:layout:)]) {
+        earliestDate = [self.dataSource fixedStartTimeForcollectionView:self.collectionView layout:self];
+    } else {
+        for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++) {
+            NSDate *earliestDateForSection = [self earliestDateForSection:section];
+            if ((earliestDateForSection && [earliestDateForSection ins_isEarlierThan:earliestDate]) || !earliestDate) {
+                earliestDate = earliestDateForSection;
+            }
         }
     }
 
@@ -854,11 +858,15 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 
     NSDate *earliestDate = nil;
 
-    for (NSInteger item = 0; item < [self.collectionView numberOfItemsInSection:section]; item++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
-        NSDate *itemStartDate = [self startDateForIndexPath:indexPath];
-        if ((itemStartDate && [itemStartDate ins_isEarlierThan:earliestDate]) || !earliestDate) {
-            earliestDate = itemStartDate;
+    if ([self.dataSource respondsToSelector:@selector(fixedStartTimeForcollectionView:layout:)]) {
+        earliestDate = [self.dataSource fixedStartTimeForcollectionView:self.collectionView layout:self];
+    } else {
+        for (NSInteger item = 0; item < [self.collectionView numberOfItemsInSection:section]; item++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+            NSDate *itemStartDate = [self startDateForIndexPath:indexPath];
+            if ((itemStartDate && [itemStartDate ins_isEarlierThan:earliestDate]) || !earliestDate) {
+                earliestDate = itemStartDate;
+            }
         }
     }
 
@@ -877,10 +885,14 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
     }
     NSDate *latestDate = nil;
 
-    for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++) {
-        NSDate *latestDateForSection = [self latestDateForSection:section];
-        if ((latestDateForSection && [latestDateForSection ins_isLaterThan:latestDate]) || !latestDate) {
-            latestDate = latestDateForSection;
+    if ([self.dataSource respondsToSelector:@selector(fixedEndTimeForcollectionView:layout:)]) {
+        latestDate = [self.dataSource fixedEndTimeForcollectionView:self.collectionView layout:self];
+    } else {
+        for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++) {
+            NSDate *latestDateForSection = [self latestDateForSection:section];
+            if ((latestDateForSection && [latestDateForSection ins_isLaterThan:latestDate]) || !latestDate) {
+                latestDate = latestDateForSection;
+            }
         }
     }
 
@@ -900,11 +912,15 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 
     NSDate *latestDate = nil;
 
-    for (NSInteger item = 0; item < [self.collectionView numberOfItemsInSection:section]; item++) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
-        NSDate *itemEndDate = [self endDateForIndexPath:indexPath];
-        if ((itemEndDate && [itemEndDate ins_isLaterThan:latestDate]) || !latestDate) {
-            latestDate = itemEndDate;
+    if ([self.dataSource respondsToSelector:@selector(fixedEndTimeForcollectionView:layout:)]) {
+        latestDate = [self.dataSource fixedEndTimeForcollectionView:self.collectionView layout:self];
+    } else {
+        for (NSInteger item = 0; item < [self.collectionView numberOfItemsInSection:section]; item++) {
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
+            NSDate *itemEndDate = [self endDateForIndexPath:indexPath];
+            if ((itemEndDate && [itemEndDate ins_isLaterThan:latestDate]) || !latestDate) {
+                latestDate = itemEndDate;
+            }
         }
     }
 

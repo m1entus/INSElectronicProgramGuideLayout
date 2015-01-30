@@ -146,7 +146,6 @@ typedef NS_ENUM(NSUInteger, INSElectronicProgramGuideLayoutType) {
 
 @end
 
-
 @protocol INSElectronicProgramGuideLayoutDataSource <UICollectionViewDataSource>
 @required
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(INSElectronicProgramGuideLayout *)electronicProgramGuideLayout startTimeForItemAtIndexPath:(NSIndexPath *)indexPath;
@@ -154,6 +153,9 @@ typedef NS_ENUM(NSUInteger, INSElectronicProgramGuideLayoutType) {
 - (NSDate *)collectionView:(UICollectionView *)collectionView layout:(INSElectronicProgramGuideLayout *)electronicProgramGuideLayout endTimeForItemAtIndexPath:(NSIndexPath *)indexPath;
 
 - (NSDate *)currentTimeForCollectionView:(UICollectionView *)collectionView layout:(INSElectronicProgramGuideLayout *)collectionViewLayout;
+@optional
+- (NSDate *)fixedStartTimeForcollectionView:(UICollectionView *)collectionView layout:(INSElectronicProgramGuideLayout *)electronicProgramGuideLayout;
+- (NSDate *)fixedEndTimeForcollectionView:(UICollectionView *)collectionView layout:(INSElectronicProgramGuideLayout *)electronicProgramGuideLayout;
 @end
 
 @protocol INSElectronicProgramGuideLayoutDelegate <UICollectionViewDelegate>
