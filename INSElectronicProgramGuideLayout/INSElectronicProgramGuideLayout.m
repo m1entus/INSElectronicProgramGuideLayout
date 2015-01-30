@@ -463,6 +463,13 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
     for (NSUInteger item = 0; item < [self.collectionView numberOfItemsInSection:section]; item++) {
 
         NSIndexPath *floatingItemIndexPath = [NSIndexPath indexPathForRow:item inSection:section];
+        
+        NSDate *itemEndTime = [self endDateForIndexPath:floatingItemIndexPath];
+        
+        if ([itemEndTime ins_isLaterThan:[self latestDate]] || [itemEndTime ins_isEarlierThan:[self earliestDate]]) {
+            continue;
+        }
+        
         UICollectionViewLayoutAttributes *itemAttributes = [self.itemAttributes objectForKey:floatingItemIndexPath];
         CGRect itemAttributesFrame = itemAttributes.frame;
         itemAttributesFrame.origin.y -= self.cellMargin.top;
@@ -497,17 +504,23 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 {
     for (NSUInteger item = 0; item < [self.collectionView numberOfItemsInSection:section]; item++) {
         NSIndexPath *itemIndexPath = [NSIndexPath indexPathForItem:item inSection:section];
-        UICollectionViewLayoutAttributes *itemAttributes = [self layoutAttributesForCellAtIndexPath:itemIndexPath withItemCache:self.itemAttributes];
-
-        NSDate *itemStartTime = [self startDateForIndexPath:itemIndexPath];
+        
         NSDate *itemEndTime = [self endDateForIndexPath:itemIndexPath];
-
+        
+        if ([itemEndTime ins_isLaterThan:[self latestDate]] || [itemEndTime ins_isEarlierThan:[self earliestDate]]) {
+            continue;
+        }
+        
+        NSDate *itemStartTime = [self startDateForIndexPath:itemIndexPath];
+        
         CGFloat itemStartTimePositionX = [self xCoordinateForDate:itemStartTime];
         CGFloat itemEndTimePositionX = [self xCoordinateForDate:itemEndTime];
         CGFloat itemWidth = itemEndTimePositionX - itemStartTimePositionX;
-
+        
+        UICollectionViewLayoutAttributes *itemAttributes = [self layoutAttributesForCellAtIndexPath:itemIndexPath withItemCache:self.itemAttributes];
         itemAttributes.frame = CGRectMake(itemStartTimePositionX + self.cellMargin.left, rect.origin.y + self.cellMargin.top, itemWidth - self.cellMargin.left - self.cellMargin.right, rect.size.height - self.cellMargin.top - self.cellMargin.bottom);
         itemAttributes.zIndex = [self zIndexForElementKind:nil];
+
     }
 }
 
@@ -831,8 +844,8 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
     }
     NSDate *earliestDate = nil;
     
-    if ([self.dataSource respondsToSelector:@selector(fixedStartTimeForcollectionView:layout:)]) {
-        earliestDate = [self.dataSource fixedStartTimeForcollectionView:self.collectionView layout:self];
+    if ([self.dataSource respondsToSelector:@selector(collectionView:startTimeForLayout:)]) {
+        earliestDate = [self.dataSource collectionView:self.collectionView startTimeForLayout:self];
     } else {
         for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++) {
             NSDate *earliestDateForSection = [self earliestDateForSection:section];
@@ -858,8 +871,8 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 
     NSDate *earliestDate = nil;
 
-    if ([self.dataSource respondsToSelector:@selector(fixedStartTimeForcollectionView:layout:)]) {
-        earliestDate = [self.dataSource fixedStartTimeForcollectionView:self.collectionView layout:self];
+    if ([self.dataSource respondsToSelector:@selector(collectionView:startTimeForLayout:)]) {
+        earliestDate = [self.dataSource collectionView:self.collectionView startTimeForLayout:self];
     } else {
         for (NSInteger item = 0; item < [self.collectionView numberOfItemsInSection:section]; item++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
@@ -885,8 +898,8 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
     }
     NSDate *latestDate = nil;
 
-    if ([self.dataSource respondsToSelector:@selector(fixedEndTimeForcollectionView:layout:)]) {
-        latestDate = [self.dataSource fixedEndTimeForcollectionView:self.collectionView layout:self];
+    if ([self.dataSource respondsToSelector:@selector(collectionView:endTimeForlayout:)]) {
+        latestDate = [self.dataSource collectionView:self.collectionView endTimeForlayout:self];
     } else {
         for (NSInteger section = 0; section < self.collectionView.numberOfSections; section++) {
             NSDate *latestDateForSection = [self latestDateForSection:section];
@@ -912,8 +925,8 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 
     NSDate *latestDate = nil;
 
-    if ([self.dataSource respondsToSelector:@selector(fixedEndTimeForcollectionView:layout:)]) {
-        latestDate = [self.dataSource fixedEndTimeForcollectionView:self.collectionView layout:self];
+    if ([self.dataSource respondsToSelector:@selector(collectionView:endTimeForlayout:)]) {
+        latestDate = [self.dataSource collectionView:self.collectionView endTimeForlayout:self];
     } else {
         for (NSInteger item = 0; item < [self.collectionView numberOfItemsInSection:section]; item++) {
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];

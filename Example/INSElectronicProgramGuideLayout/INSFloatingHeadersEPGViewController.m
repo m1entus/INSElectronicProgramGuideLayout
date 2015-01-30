@@ -54,6 +54,8 @@
     self.collectionViewEPGLayout.currentTimeVerticalGridlineWidth = 4;
     self.collectionViewEPGLayout.sectionHeight = 60;
     self.collectionViewEPGLayout.sectionHeaderWidth = 110;
+    
+//    self.collectionView.contentInset = UIEdgeInsetsMake(0, -1500, 0, -1500);
 
     NSString *timeRowHeaderStringClass = NSStringFromClass([ISHourHeader class]);
     [self.collectionView registerNib:[UINib nibWithNibName:timeRowHeaderStringClass bundle:nil] forSupplementaryViewOfKind:INSEPGLayoutElementKindHourHeader withReuseIdentifier:timeRowHeaderStringClass];
