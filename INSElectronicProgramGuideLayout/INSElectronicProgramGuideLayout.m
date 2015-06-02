@@ -291,30 +291,33 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewAtIndexPath:(NSIndexPath *)indexPath ofKind:(NSString *)kind withItemCache:(NSMutableDictionary *)itemCache
 {
+    NSIndexPath *indexPathKey = [self keyForIndexPath:indexPath];
     UICollectionViewLayoutAttributes *layoutAttributes;
-    if (self.registeredDecorationClasses[kind] && !(layoutAttributes = itemCache[indexPath])) {
-        layoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:kind withIndexPath:indexPath];
-        itemCache[indexPath] = layoutAttributes;
+    if (self.registeredDecorationClasses[kind] && !(layoutAttributes = itemCache[indexPathKey])) {
+        layoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForDecorationViewOfKind:kind withIndexPath:indexPathKey];
+        itemCache[indexPathKey] = layoutAttributes;
     }
     return layoutAttributes;
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewAtIndexPath:(NSIndexPath *)indexPath ofKind:(NSString *)kind withItemCache:(NSMutableDictionary *)itemCache
 {
+    NSIndexPath *indexPathKey = [self keyForIndexPath:indexPath];
     UICollectionViewLayoutAttributes *layoutAttributes;
-    if (!(layoutAttributes = itemCache[indexPath])) {
-        layoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:kind withIndexPath:indexPath];
-        itemCache[indexPath] = layoutAttributes;
+    if (!(layoutAttributes = itemCache[indexPathKey])) {
+        layoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:kind withIndexPath:indexPathKey];
+        itemCache[indexPathKey] = layoutAttributes;
     }
     return layoutAttributes;
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForCellAtIndexPath:(NSIndexPath *)indexPath withItemCache:(NSMutableDictionary *)itemCache
 {
+    NSIndexPath *indexPathKey = [self keyForIndexPath:indexPath];
     UICollectionViewLayoutAttributes *layoutAttributes;
-    if (!(layoutAttributes = itemCache[indexPath])) {
-        layoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-        itemCache[indexPath] = layoutAttributes;
+    if (!(layoutAttributes = itemCache[indexPathKey])) {
+        layoutAttributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPathKey];
+        itemCache[indexPathKey] = layoutAttributes;
     }
     return layoutAttributes;
 }
@@ -698,22 +701,25 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return self.itemAttributes[indexPath];
+    NSIndexPath *indexPathKey = [self keyForIndexPath:indexPath];
+    return self.itemAttributes[indexPathKey];
 }
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
+    NSIndexPath *indexPathKey = [self keyForIndexPath:indexPath];
+
     if (kind == INSEPGLayoutElementKindSectionHeader) {
-        return self.sectionHeaderAttributes[indexPath];
+        return self.sectionHeaderAttributes[indexPathKey];
 
     }else if (kind == INSEPGLayoutElementKindHourHeader) {
-        return self.hourHeaderAttributes[indexPath];
+        return self.hourHeaderAttributes[indexPathKey];
 
     } else if (kind == INSEPGLayoutElementKindHalfHourHeader) {
-        return self.halfHourHeaderAttributes[indexPath];
+        return self.halfHourHeaderAttributes[indexPathKey];
 
     } else if (kind == INSEPGLayoutElementKindFloatingItemOverlay) {
-        return self.floatingItemAttributes[indexPath];
+        return self.floatingItemAttributes[indexPathKey];
     }
 
     return nil;
@@ -721,26 +727,28 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForDecorationViewOfKind:(NSString *)decorationViewKind atIndexPath:(NSIndexPath *)indexPath
 {
+    NSIndexPath *indexPathKey = [self keyForIndexPath:indexPath];
+
     if (decorationViewKind == INSEPGLayoutElementKindCurrentTimeIndicator) {
-        return self.currentTimeIndicatorAttributes[indexPath];
+        return self.currentTimeIndicatorAttributes[indexPathKey];
     }
     else if (decorationViewKind == INSEPGLayoutElementKindCurrentTimeIndicatorVerticalGridline) {
-        return self.currentTimeVerticalGridlineAttributes[indexPath];
+        return self.currentTimeVerticalGridlineAttributes[indexPathKey];
     }
     else if (decorationViewKind == INSEPGLayoutElementKindVerticalGridline) {
-        return self.verticalGridlineAttributes[indexPath];
+        return self.verticalGridlineAttributes[indexPathKey];
     }
     else if (decorationViewKind == INSEPGLayoutElementKindHorizontalGridline) {
-        return self.horizontalGridlineAttributes[indexPath];
+        return self.horizontalGridlineAttributes[indexPathKey];
     }
     else if (decorationViewKind == INSEPGLayoutElementKindHourHeaderBackground) {
-        return self.hourHeaderBackgroundAttributes[indexPath];
+        return self.hourHeaderBackgroundAttributes[indexPathKey];
     }
     else if (decorationViewKind == INSEPGLayoutElementKindSectionHeaderBackground) {
-        return self.hourHeaderBackgroundAttributes[indexPath];
+        return self.hourHeaderBackgroundAttributes[indexPathKey];
 
     } else if (decorationViewKind == INSEPGLayoutElementKindHalfHourVerticalGridline) {
-        return self.verticalHalfHourGridlineAttributes[indexPath];
+        return self.verticalHalfHourGridlineAttributes[indexPathKey];
     }
     return nil;
 }
@@ -949,25 +957,29 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 
 - (NSDate *)startDateForIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.cachedStartTimeDate objectForKey:indexPath]) {
-        return [self.cachedStartTimeDate objectForKey:indexPath];
+    NSIndexPath *indexPathKey = [self keyForIndexPath:indexPath];
+
+    if ([self.cachedStartTimeDate objectForKey:indexPathKey]) {
+        return [self.cachedStartTimeDate objectForKey:indexPathKey];
     }
 
-    NSDate *date = [self.dataSource collectionView:self.collectionView layout:self startTimeForItemAtIndexPath:indexPath];
+    NSDate *date = [self.dataSource collectionView:self.collectionView layout:self startTimeForItemAtIndexPath:indexPathKey];
 
-    [self.cachedStartTimeDate setObject:date forKey:indexPath];
+    [self.cachedStartTimeDate setObject:date forKey:indexPathKey];
     return date;
 }
 
 - (NSDate *)endDateForIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.cachedEndTimeDate objectForKey:indexPath]) {
-        return [self.cachedEndTimeDate objectForKey:indexPath];
+    NSIndexPath *indexPathKey = [self keyForIndexPath:indexPath];
+
+    if ([self.cachedEndTimeDate objectForKey:indexPathKey]) {
+        return [self.cachedEndTimeDate objectForKey:indexPathKey];
     }
 
-    NSDate *date = [self.dataSource collectionView:self.collectionView layout:self endTimeForItemAtIndexPath:indexPath];
+    NSDate *date = [self.dataSource collectionView:self.collectionView layout:self endTimeForItemAtIndexPath:indexPathKey];
 
-    [self.cachedEndTimeDate setObject:date forKey:indexPath];
+    [self.cachedEndTimeDate setObject:date forKey:indexPathKey];
     return date;
 }
 
@@ -983,18 +995,31 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
     return date;
 }
 
+#pragma mark - Helpers
+// Issues using NSIndexPath as key in NSMutableDictionary
+// http://stackoverflow.com/questions/19613927/issues-using-nsindexpath-as-key-in-nsmutabledictionary
+
+- (NSIndexPath *)keyForIndexPath:(NSIndexPath *)indexPath {
+    if ([indexPath class] == [NSIndexPath class]) {
+        return indexPath;
+    }
+    return [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
+}
+
 #pragma mark - Size Delegate Wrapper
 
 - (CGSize)floatingItemOverlaySizeForIndexPath:(NSIndexPath *)indexPath
 {
-    if ([self.cachedFloatingItemsOverlaySize objectForKey:indexPath]) {
-        return [[self.cachedFloatingItemsOverlaySize objectForKey:indexPath] CGSizeValue];
+    NSIndexPath *indexPathKey = [self keyForIndexPath:indexPath];
+
+    if ([self.cachedFloatingItemsOverlaySize objectForKey:indexPathKey]) {
+        return [[self.cachedFloatingItemsOverlaySize objectForKey:indexPathKey] CGSizeValue];
     }
     CGSize floatingItemSize = self.floatingItemOverlaySize;
     if ([self.delegate respondsToSelector:@selector(collectionView:layout:sizeForFloatingItemOverlayAtIndexPath:)]) {
-        floatingItemSize = [self.delegate collectionView:self.collectionView layout:self sizeForFloatingItemOverlayAtIndexPath:indexPath];
+        floatingItemSize = [self.delegate collectionView:self.collectionView layout:self sizeForFloatingItemOverlayAtIndexPath:indexPathKey];
     }
-    [self.cachedFloatingItemsOverlaySize setObject:[NSValue valueWithCGSize:floatingItemSize] forKey:indexPath];
+    [self.cachedFloatingItemsOverlaySize setObject:[NSValue valueWithCGSize:floatingItemSize] forKey:indexPathKey];
     return floatingItemSize;
 }
 
