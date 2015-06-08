@@ -821,7 +821,11 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
     }
     // Current Time Horizontal Gridline
     else if (elementKind == INSEPGLayoutElementKindCurrentTimeIndicatorVerticalGridline) {
-        return (INSEPGLayoutMinBackgroundZ + 2.0);
+        if (self.currentTimeIndicatorShouldBeBehind) {
+            return (INSEPGLayoutMinBackgroundZ + 2.0);
+        }
+        // Place currentTimeGridLine juste behind Section Header and above cell
+        return (INSEPGLayoutMinOverlayZ + ((self.headerLayoutType == INSElectronicProgramGuideLayoutTypeTimeRowAboveDayColumn) ? (floating ? 5.9 : 0.9) : (floating ? 8.9 : 3.9)));
     }
     // Vertical Gridline
     else if (elementKind == INSEPGLayoutElementKindVerticalGridline || elementKind == INSEPGLayoutElementKindHalfHourVerticalGridline) {
