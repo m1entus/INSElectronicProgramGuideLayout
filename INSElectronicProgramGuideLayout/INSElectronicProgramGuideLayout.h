@@ -74,6 +74,12 @@ typedef NS_ENUM(NSUInteger, INSElectronicProgramGuideLayoutType) {
 @property (nonatomic, assign) CGFloat currentTimeVerticalGridlineWidth;
 
 /**
+ *  Current time indicator zIndex
+ */
+@property (nonatomic, assign) BOOL currentTimeIndicatorShouldBeBehind;
+
+
+/**
  *  Gridlines size
  */
 @property (nonatomic, assign) CGFloat horizontalGridlineHeight;
