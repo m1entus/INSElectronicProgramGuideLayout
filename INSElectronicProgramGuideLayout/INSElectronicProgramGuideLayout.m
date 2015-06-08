@@ -185,6 +185,9 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
     self.floatingItemOffsetFromSection = 10.0;
     self.shouldResizeStickyHeaders = NO;
 
+    // Set CurrentTime Behind cell
+    self.currentTimeIndicatorShouldBeBehind = YES;
+
     self.headerLayoutType = INSElectronicProgramGuideLayoutTypeTimeRowAboveDayColumn;
 
     // Invalidate layout on minute ticks (to update the position of the current time indicator)
