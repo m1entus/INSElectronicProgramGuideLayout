@@ -9,5 +9,5 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
-#import <CoreData+MagicalRecord.h>
+#import <MagicalRecord/MagicalRecord.h>
 #endif
