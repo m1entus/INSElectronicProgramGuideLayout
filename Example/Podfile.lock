@@ -1,8 +1,8 @@
 PODS:
   - LoremIpsum (1.0.0)
-  - MagicalRecord (2.2):
-    - MagicalRecord/Core
-  - MagicalRecord/Core (2.2)
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/Core (2.3.2)
   - UIColor+MLPFlatColors (1.0)
 
 DEPENDENCIES:
@@ -11,8 +11,10 @@ DEPENDENCIES:
   - UIColor+MLPFlatColors
 
 SPEC CHECKSUMS:
-  LoremIpsum: a4d378ecaffcb08c7e40cdba3fb935dc41b2272c
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
-  UIColor+MLPFlatColors: d74d0e59ba8eb8960c0f8136928056d91e208585
+  LoremIpsum: 9029c55d36501b2ee0b05cc9ecda11d3a0479160
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  UIColor+MLPFlatColors: 14deb8f28da06ab8918c14231d4ff49ca7cd384a
 
-COCOAPODS: 0.34.4
+PODFILE CHECKSUM: 080e8ffa521c075b8b27ccb3c6428ecd77c84448
+
+COCOAPODS: 1.0.1

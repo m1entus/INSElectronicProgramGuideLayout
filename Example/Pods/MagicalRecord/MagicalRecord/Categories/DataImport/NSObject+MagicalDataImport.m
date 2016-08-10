@@ -7,32 +7,28 @@
 //
 
 #import "NSObject+MagicalDataImport.h"
+#import "NSAttributeDescription+MagicalDataImport.h"
+#import "NSEntityDescription+MagicalDataImport.h"
 #import "NSManagedObject+MagicalDataImport.h"
-#import "MagicalRecord.h"
-#import "CoreData+MagicalRecord.h"
+#import "NSRelationshipDescription+MagicalDataImport.h"
+#import "MagicalRecordLogging.h"
 
 NSUInteger const kMagicalRecordImportMaximumAttributeFailoverDepth = 10;
 
 
 @implementation NSObject (MagicalRecord_DataImport)
 
-//#warning If you implement valueForUndefinedKey: in any NSObject in your code, this may be the problem if something broke
-- (id) MR_valueForUndefinedKey:(NSString *)key
-{
-    return nil;
-}
-
 - (NSString *) MR_lookupKeyForAttribute:(NSAttributeDescription *)attributeInfo;
 {
     NSString *attributeName = [attributeInfo name];
-    NSString *lookupKey = [[attributeInfo userInfo] valueForKey:kMagicalRecordImportAttributeKeyMapKey] ?: attributeName;
+    NSString *lookupKey = [[attributeInfo userInfo] objectForKey:kMagicalRecordImportAttributeKeyMapKey] ?: attributeName;
     
     id value = [self valueForKeyPath:lookupKey];
     
     for (NSUInteger i = 1; i < kMagicalRecordImportMaximumAttributeFailoverDepth && value == nil; i++)
     {
         attributeName = [NSString stringWithFormat:@"%@.%lu", kMagicalRecordImportAttributeKeyMapKey, (unsigned long)i];
-        lookupKey = [[attributeInfo userInfo] valueForKey:attributeName];
+        lookupKey = [[attributeInfo userInfo] objectForKey:attributeName];
         if (lookupKey == nil) 
         {
             return nil;
@@ -54,15 +50,14 @@ NSUInteger const kMagicalRecordImportMaximumAttributeFailoverDepth = 10;
     NSEntityDescription *destinationEntity = [relationshipInfo destinationEntity];
     if (destinationEntity == nil) 
     {
-        MRLog(@"Unable to find entity for type '%@'", [self valueForKey:kMagicalRecordImportRelationshipTypeKey]);
+        MRLogError(@"Unable to find entity for type '%@'", [self valueForKey:kMagicalRecordImportRelationshipTypeKey]);
         return nil;
     }
     
-    NSString *primaryKeyName = [relationshipInfo MR_primaryKey];
-    
-    NSAttributeDescription *primaryKeyAttribute = [[destinationEntity attributesByName] valueForKey:primaryKeyName];
-    NSString *lookupKey = [[primaryKeyAttribute userInfo] valueForKey:kMagicalRecordImportAttributeKeyMapKey] ?: [primaryKeyAttribute name];
-    
+    NSString               *primaryKeyName      = [relationshipInfo MR_primaryKey];
+    NSAttributeDescription *primaryKeyAttribute = [destinationEntity MR_attributeDescriptionForName:primaryKeyName];
+    NSString               *lookupKey           = [self MR_lookupKeyForAttribute:primaryKeyAttribute] ?: [primaryKeyAttribute name];
+
     return lookupKey;
 }
 
