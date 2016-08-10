@@ -1,8 +1,10 @@
 platform :ios, "7.0"
 
-pod 'MagicalRecord'
-pod 'UIColor+MLPFlatColors'
-pod 'LoremIpsum'
+target 'INSElectronicProgramGuideLayout' do
+  pod 'MagicalRecord'
+  pod 'UIColor+MLPFlatColors'
+  pod 'LoremIpsum'
+end
 
 inhibit_all_warnings!
 
