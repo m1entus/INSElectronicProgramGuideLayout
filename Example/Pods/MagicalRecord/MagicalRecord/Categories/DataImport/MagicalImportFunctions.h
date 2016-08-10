@@ -7,22 +7,21 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MagicalRecord/MagicalRecordXcode7CompatibilityMacros.h>
 
-
-NSDate * adjustDateForDST(NSDate *date);
-NSDate * dateFromString(NSString *value, NSString *format);
-NSNumber * numberFromString(NSString *value);
-NSString * attributeNameFromString(NSString *value);
-NSString * primaryKeyNameFromString(NSString *value);
+NSDate *  __MR_nonnull MR_adjustDateForDST(NSDate *__MR_nonnull date);
+NSDate * __MR_nonnull MR_dateFromString(NSString *__MR_nonnull value, NSString *__MR_nonnull format);
+NSDate * __MR_nonnull MR_dateFromNumber(NSNumber *__MR_nonnull value, BOOL milliseconds);
+NSNumber * __MR_nonnull MR_numberFromString(NSString *__MR_nonnull value);
+NSString * __MR_nonnull MR_attributeNameFromString(NSString *__MR_nonnull value);
+NSString * __MR_nonnull MR_primaryKeyNameFromString(NSString *__MR_nonnull value);
 
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
-UIColor * UIColorFromString(NSString *serializedColor);
-
+UIColor * __MR_nullable MR_colorFromString(NSString *__MR_nonnull serializedColor);
 #else
 #import <AppKit/AppKit.h>
-NSColor * NSColorFromString(NSString *serializedColor);
-
+NSColor * __MR_nullable MR_colorFromString(NSString *__MR_nonnull serializedColor);
 #endif
-extern id (*colorFromString)(NSString *);
 
+NSInteger * __MR_nullable MR_newColorComponentsFromString(NSString *__MR_nonnull serializedColor);
