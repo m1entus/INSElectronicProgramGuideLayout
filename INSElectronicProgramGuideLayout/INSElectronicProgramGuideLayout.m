@@ -192,7 +192,7 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
 
     // Invalidate layout on minute ticks (to update the position of the current time indicator)
     NSDate *oneMinuteInFuture = [[NSDate date] dateByAddingTimeInterval:60];
-    NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit) fromDate:oneMinuteInFuture];
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:(NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute) fromDate:oneMinuteInFuture];
     NSDate *nextMinuteBoundary = [[NSCalendar currentCalendar] dateFromComponents:components];
 
     // This needs to be a weak reference, otherwise we get a retain cycle
@@ -687,7 +687,7 @@ NSUInteger const INSEPGLayoutMinBackgroundZ = 0.0;
     NSIndexPath *hourHeaderBackgroundIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     UICollectionViewLayoutAttributes *hourHeaderBackgroundAttributes = [self layoutAttributesForDecorationViewAtIndexPath:hourHeaderBackgroundIndexPath ofKind:INSEPGLayoutElementKindHourHeaderBackground withItemCache:self.hourHeaderBackgroundAttributes];
     // Frame
-    CGFloat hourHeaderBackgroundHeight = (self.hourHeaderHeight + ((self.collectionView.contentOffset.y < 0.0) ? fabsf(self.collectionView.contentOffset.y) : 0.0)) - self.collectionView.contentInset.top;
+    CGFloat hourHeaderBackgroundHeight = (self.hourHeaderHeight + ((self.collectionView.contentOffset.y < 0.0) ? fabs(self.collectionView.contentOffset.y) : 0.0)) - self.collectionView.contentInset.top;
 
     if (!self.shouldResizeStickyHeaders || self.hourHeaderHeight >= hourHeaderBackgroundHeight) {
         hourHeaderBackgroundHeight = self.hourHeaderHeight;
