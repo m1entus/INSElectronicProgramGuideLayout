@@ -3,18 +3,24 @@ PODS:
   - MagicalRecord (2.3.2):
     - MagicalRecord/Core (= 2.3.2)
   - MagicalRecord/Core (2.3.2)
-  - UIColor+MLPFlatColors (1.0)
+  - "UIColor+MLPFlatColors (1.0)"
 
 DEPENDENCIES:
   - LoremIpsum
   - MagicalRecord
-  - UIColor+MLPFlatColors
+  - "UIColor+MLPFlatColors"
+
+SPEC REPOS:
+  trunk:
+    - LoremIpsum
+    - MagicalRecord
+    - "UIColor+MLPFlatColors"
 
 SPEC CHECKSUMS:
   LoremIpsum: 9029c55d36501b2ee0b05cc9ecda11d3a0479160
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
-  UIColor+MLPFlatColors: 14deb8f28da06ab8918c14231d4ff49ca7cd384a
+  "UIColor+MLPFlatColors": 14deb8f28da06ab8918c14231d4ff49ca7cd384a
 
 PODFILE CHECKSUM: 080e8ffa521c075b8b27ccb3c6428ecd77c84448
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.9.3
